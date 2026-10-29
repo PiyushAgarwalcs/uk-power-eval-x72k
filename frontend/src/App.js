@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { Wind } from "lucide-react";
 
-const API = process.env.REACT_APP_API_URL || "http://localhost:8000";
+const API = (process.env.REACT_APP_API_URL || "http://localhost:8000").replace(/\/+$/, "");
 const fmt = (v, d = 0) => (v == null ? "-" : Number(v).toLocaleString("en-GB", { maximumFractionDigits: d }));
 
 function Card({ label, value, unit, hint }) {

@@ -18,9 +18,20 @@ import elexon
 
 app = FastAPI(title="UK Wind Forecast Evaluation API")
 
-origins = [o.strip() for o in os.getenv("ALLOWED_ORIGINS", "*").split(",")]
-app.add_middleware(CORSMiddleware, allow_origins=origins,
-                   allow_methods=["GET"], allow_headers=["*"])
+raw_origins = [o.strip() for o in os.getenv("ALLOWED_ORIGINS", "*").split(",") if o.strip()]
+origins = []
+for o in raw_origins:
+    origins.append(o)
+    origins.append(o.rstrip("/"))
+origins = list(set(origins))
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"] if "*" in origins else origins,
+    allow_origin_regex=r"https://.*\.vercel\.app" if "*" not in origins else None,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @lru_cache(maxsize=1)

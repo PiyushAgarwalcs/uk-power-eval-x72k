@@ -7,7 +7,7 @@ Data: Elexon BMRS FUELHH (actual wind) and WINDFOR (wind forecast), January 2026
 ## Live app
 - Frontend: https://uk-power-eval-x72k.vercel.app
 - Backend API docs: https://uk-power-eval-x72k.onrender.com/docs
-- Video demo: <YOUTUBE_UNLISTED_URL>
+- Video demo: https://www.youtube.com/watch?v=wTo4ZOnnIfs
 
 ## Repository structure
 - `backend/main.py` - FastAPI app and endpoints
